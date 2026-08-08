@@ -5,243 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionário de Avaliação - Porteiro e Vigia</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
-            margin: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #0056b3;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
-        .header h1 {
-            color: #0056b3;
-            margin: 0 0 10px 0;
-        }
-        .header p {
-            color: #666;
-            margin: 0;
-        }
-        .instructions {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 5px solid #ffeeba;
-            margin-bottom: 30px;
-        }
-        .question-block {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .question-title {
-            font-weight: 600;
-            font-size: 1.1em;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-        .option {
-            display: block;
-            margin-bottom: 10px;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background 0.2s;
-        }
-        .option:hover {
-            background-color: #f8f9fa;
-        }
-        input[type="radio"] {
-            margin-right: 10px;
-            transform: scale(1.2);
-        }
-        .btn-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-        button {
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.1s;
-        }
-        button:hover {
-            background-color: #004494;
-        }
-        button:active {
-            transform: scale(0.98);
-        }
-        #result-container {
-            display: none;
-            text-align: center;
-            margin-top: 30px;
-            padding: 25px;
-            border-radius: 8px;
-            font-size: 1.3em;
-            font-weight: bold;
-            animation: fadeIn 0.5s;
-        }
-        .aprovado {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .reprovado {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        .feedback {
-            font-size: 0.8em;
-            font-weight: normal;
-            margin-top: 10px;
-            display: block;
-        }
-        #certificado-section {
-            display: none;
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 2px dashed #c3e6cb;
-            text-align: left;
-            font-size: 1em;
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .btn-emitir {
-            background-color: #28a745;
-            width: 100%;
-            margin-top: 10px;
-        }
-        #pix-section {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .pix-code-box {
-            width: 100%;
-            height: 60px;
-            padding: 10px;
-            font-family: monospace;
-            background: #fff;
-            border: 1px solid #ccc;
-            margin: 10px 0;
-            box-sizing: border-box;
-        }
-        .btn-copiar {
-            background-color: #17a2b8;
-            width: 100%;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; padding: 20px; margin: 0; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #0056b3; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { color: #0056b3; margin: 0 0 10px 0; }
+        .instructions { background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 5px; border-left: 5px solid #ffeeba; margin-bottom: 30px; }
+        .question-block { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .question-title { font-weight: 600; font-size: 1.1em; margin-bottom: 15px; color: #2c3e50; }
+        .option { display: block; margin-bottom: 10px; cursor: pointer; padding: 10px; border-radius: 5px; transition: background 0.2s; }
+        .option:hover { background-color: #f8f9fa; }
+        input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
+        .btn-container { text-align: center; margin-top: 40px; }
+        button { background-color: #0056b3; color: white; border: none; padding: 15px 40px; font-size: 1.2em; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #004494; }
+        #result-container { display: none; text-align: center; margin-top: 30px; padding: 25px; border-radius: 8px; font-size: 1.3em; font-weight: bold; }
+        .aprovado { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .reprovado { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        #certificado-section { display: none; margin-top: 25px; padding-top: 25px; border-top: 2px dashed #c3e6cb; text-align: left; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; font-weight: bold; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .btn-emitir { background-color: #28a745; width: 100%; margin-top: 10px; color: white; border: none; padding: 15px; }
+        #pix-section { display: none; text-align: center; padding: 20px; background-color: #f8f9fa; border: 1px solid #ddd; margin-top: 20px; }
+        .pix-code-box { width: 100%; height: 60px; padding: 10px; font-family: monospace; background: #fff; margin: 10px 0; }
+        .btn-copiar { background-color: #17a2b8; width: 100%; color: white; border: none; padding: 15px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
-        <h1>Avaliação: Porteiro e Vigia</h1>
-        <p>Área do Aluno - Prime Cursos</p>
-    </div>
-
-    <div class="instructions">
-        <strong>Instruções:</strong> A nota mínima para aprovação é 70% (7 acertos).
-    </div>
+    <div class="header"><h1>Avaliação: Porteiro e Vigia</h1><p>Área do Aluno - Prime Cursos</p></div>
+    <div class="instructions"><strong>Instruções:</strong> Esta avaliação vale nota! Responda as questões abaixo com calma e atenção. Cada questão possui apenas uma resposta válida. A nota mínima para aprovação é de 70% (7 acertos).</div>
 
     <form id="quizForm">
-        <!-- Questões 1 a 10 -->
-        <div class="question-block"><div class="question-title">1. Qual a responsabilidade do porteiro sobre elevadores?</div>
-        <label class="option"><input type="radio" name="q1" value="0"> Operar manualmente.</label>
-        <label class="option"><input type="radio" name="q1" value="1"> Fiscalizar o uso social e de serviço.</label>
-        <label class="option"><input type="radio" name="q1" value="0"> Não intervir.</label></div>
+        <!-- Questão 1 -->
+        <div class="question-block"><div class="question-title">Questão 1: Qual das seguintes afirmações melhor descreve a responsabilidade do porteiro em relação ao uso dos elevadores?</div>
+        <label class="option"><input type="radio" name="q1" value="0" required> O porteiro deve operar manualmente os elevadores em todos os momentos.</label>
+        <label class="option"><input type="radio" name="q1" value="1"> É responsável por fiscalizar e controlar o uso adequado dos elevadores social e de serviço.</label>
+        <label class="option"><input type="radio" name="q1" value="0"> Não deve intervir ou monitorar o uso dos elevadores sob qualquer circunstância.</label></div>
 
-        <div class="question-block"><div class="question-title">2. Atendimento aos condôminos?</div>
-        <label class="option"><input type="radio" name="q2" value="0"> Ignorar.</label>
-        <label class="option"><input type="radio" name="q2" value="1"> Atender com educação.</label>
-        <label class="option"><input type="radio" name="q2" value="0"> Limitar a comunicação.</label></div>
-        
-        <div class="question-block"><div class="question-title">3. Entrega de mercadorias?</div>
-        <label class="option"><input type="radio" name="q3" value="0"> Aceitar tudo sem verificar.</label>
-        <label class="option"><input type="radio" name="q3" value="1"> Encaminhar ao morador ou verificar instruções.</label>
-        <label class="option"><input type="radio" name="q3" value="0"> Rejeitar por critério próprio.</label></div>
-        
-        <div class="question-block"><div class="question-title">4. Visitantes não conhecidos?</div>
-        <label class="option"><input type="radio" name="q4" value="0"> Acompanhar até o destino.</label>
-        <label class="option"><input type="radio" name="q4" value="0"> Permitir entrada livre.</label>
-        <label class="option"><input type="radio" name="q4" value="1"> Aguardar verificação fora.</label></div>
-        
-        <div class="question-block"><div class="question-title">5. Irregularidades?</div>
-        <label class="option"><input type="radio" name="q5" value="0"> Resolver sozinho.</label>
-        <label class="option"><input type="radio" name="q5" value="0"> Ignorar.</label>
-        <label class="option"><input type="radio" name="q5" value="1"> Reportar ao zelador.</label></div>
+        <!-- Questão 2 -->
+        <div class="question-block"><div class="question-title">Questão 2: O que é essencial para a função do porteiro em relação ao atendimento aos condôminos?</div>
+        <label class="option"><input type="radio" name="q2" value="0" required> Ignorar as solicitações para manter a privacidade.</label>
+        <label class="option"><input type="radio" name="q2" value="1"> Atender com educação e prestar as informações solicitadas.</label>
+        <label class="option"><input type="radio" name="q2" value="0"> Limitar a comunicação para evitar excesso de interação.</label></div>
 
-        <div class="question-block"><div class="question-title">6. Vigilância áreas externas?</div>
-        <label class="option"><input type="radio" name="q6" value="1"> Vigilância severa/manter ordem.</label>
-        <label class="option"><input type="radio" name="q6" value="0"> Observar casualmente.</label>
-        <label class="option"><input type="radio" name="q6" value="0"> Focar só no interior.</label></div>
+        <!-- Questão 3 -->
+        <div class="question-block"><div class="question-title">Questão 3: Como o porteiro deve agir em relação à entrega de mercadorias no edifício?</div>
+        <label class="option"><input type="radio" name="q3" value="0" required> Deve aceitar todas as entregas sem verificar a identificação.</label>
+        <label class="option"><input type="radio" name="q3" value="1"> Deve encaminhar diretamente ao morador ou verificar previamente conforme instruções.</label>
+        <label class="option"><input type="radio" name="q3" value="0"> Tem a liberdade de rejeitar entregas baseado em seu próprio critério.</label></div>
 
-        <div class="question-block"><div class="question-title">7. Entrega para condomínio?</div>
-        <label class="option"><input type="radio" name="q7" value="0"> Receber sem verificar.</label>
-        <label class="option"><input type="radio" name="q7" value="0"> Deixar na entrada.</label>
-        <label class="option"><input type="radio" name="q7" value="1"> Conferir com nota fiscal.</label></div>
+        <!-- Questão 4 -->
+        <div class="question-block"><div class="question-title">Questão 4: Qual destas é uma prática recomendada para porteiros ao receber visitantes não conhecidos?</div>
+        <label class="option"><input type="radio" name="q4" value="0" required> Acompanhar visitantes desconhecidos até o destino solicitado.</label>
+        <label class="option"><input type="radio" name="q4" value="0"> Permitir a entrada sem qualquer verificação.</label>
+        <label class="option"><input type="radio" name="q4" value="1"> Solicitar que o visitante aguarde fora até ser verificado.</label></div>
 
-        <div class="question-block"><div class="question-title">8. Apresentação pessoal?</div>
-        <label class="option"><input type="radio" name="q8" value="0"> Casual.</label>
-        <label class="option"><input type="radio" name="q8" value="1"> Uniforme limpo/adequado.</label>
-        <label class="option"><input type="radio" name="q8" value="0"> Qualquer vestimenta.</label></div>
+        <!-- Questão 5 -->
+        <div class="question-block"><div class="question-title">Questão 5: O que os porteiros devem fazer se observarem qualquer irregularidade no edifício?</div>
+        <label class="option"><input type="radio" name="q5" value="0" required> Resolver o problema por conta própria imediatamente.</label>
+        <label class="option"><input type="radio" name="q5" value="0"> Ignorar, a menos que seja muito grave.</label>
+        <label class="option"><input type="radio" name="q5" value="1"> Reportar ao zelador todas as irregularidades observadas.</label></div>
 
-        <div class="question-block"><div class="question-title">9. Situação suspeita?</div>
-        <label class="option"><input type="radio" name="q9" value="0"> Investigar sozinho.</label>
-        <label class="option"><input type="radio" name="q9" value="0"> Ignorar.</label>
-        <label class="option"><input type="radio" name="q9" value="1"> Informar síndico/polícia.</label></div>
+        <!-- Questão 6 -->
+        <div class="question-block"><div class="question-title">Questão 6: Que tipo de comportamento é esperado de um porteiro em relação à vigilância das áreas externas do edifício?</div>
+        <label class="option"><input type="radio" name="q6" value="1" required> Vigilância severa, evitando agrupamentos e mantendo a ordem.</label>
+        <label class="option"><input type="radio" name="q6" value="0"> Observar casualmente sem interferir.</label>
+        <label class="option"><input type="radio" name="q6" value="0"> Focar apenas no interior do edifício, ignorando as áreas externas.</label></div>
 
-        <div class="question-block"><div class="question-title">10. Correspondência?</div>
-        <label class="option"><input type="radio" name="q10" value="1"> Distribuir verificando identidade.</label>
-        <label class="option"><input type="radio" name="q10" value="0"> Armazenar até solicitar.</label>
-        <label class="option"><input type="radio" name="q10" value="0"> Entregar sem verificar.</label></div>
+        <!-- Questão 7 -->
+        <div class="question-block"><div class="question-title">Questão 7: Qual é a recomendação para um porteiro quando há entrega de mercadorias para o condomínio?</div>
+        <label class="option"><input type="radio" name="q7" value="0" required> Receber sem verificar os detalhes da entrega.</label>
+        <label class="option"><input type="radio" name="q7" value="0"> Deixar a mercadoria na entrada para ser recolhida pelo zelador.</label>
+        <label class="option"><input type="radio" name="q7" value="1"> Conferir a mercadoria com a nota fiscal antes de aceitar.</label></div>
 
-        <div class="btn-container"><button type="submit">Enviar Respostas</button></div>
+        <!-- Questão 8 -->
+        <div class="question-block"><div class="question-title">Questão 8: Como deve ser a postura do porteiro em relação às suas próprias apresentações pessoais?</div>
+        <label class="option"><input type="radio" name="q8" value="0" required> Manter uma aparência casual, conforme seu conforto.</label>
+        <label class="option"><input type="radio" name="q8" value="1"> Apresentar-se sempre bem, com uniforme limpo e adequado.</label>
+        <label class="option"><input type="radio" name="q8" value="0"> Usar qualquer vestimenta que esteja disponível, independentemente de ser formal.</label></div>
+
+        <!-- Questão 9 -->
+        <div class="question-block"><div class="question-title">Questão 9: Qual é a ação apropriada para um porteiro se um condômino reporta uma situação suspeita?</div>
+        <label class="option"><input type="radio" name="q9" value="0" required> Investigar pessoalmente antes de tomar qualquer medida.</label>
+        <label class="option"><input type="radio" name="q9" value="0"> Ignorar, a menos que tenha evidências claras.</label>
+        <label class="option"><input type="radio" name="q9" value="1"> Informar imediatamente ao síndico ou à autoridade policial, se necessário.</label></div>
+
+        <!-- Questão 10 -->
+        <div class="question-block"><div class="question-title">Questão 10: Qual das seguintes é uma responsabilidade do porteiro ao lidar com a distribuição de correspondência?</div>
+        <label class="option"><input type="radio" name="q10" value="1" required> Distribuir imediatamente após a entrega, verificando a identidade do destinatário.</label>
+        <label class="option"><input type="radio" name="q10" value="0"> Armazenar correspondências até que o destinatário solicite.</label>
+        <label class="option"><input type="radio" name="q10" value="0"> Ignorar detalhes e entregar sem verificar.</label></div>
+
+        <div class="btn-container"><button type="submit">Enviar Respostas (Finalizar)</button></div>
     </form>
 
     <div id="result-container">
         <span id="result-text"></span>
-        <span class="feedback" id="result-feedback"></span>
         <div id="certificado-section">
             <div id="form-dados-certificado">
                 <h3>Emitir Certificado</h3>
@@ -253,9 +114,9 @@
             </div>
             <div id="pix-section">
                 <h3>Certificado gerado com sucesso!</h3>
-                <p>Copie o código PIX para realizar o pagamento da taxa:</p>
+                <p>Copie o código PIX para realizar o pagamento:</p>
                 <textarea id="pix-code" class="pix-code-box" readonly>00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/5ce61e50-0f30-4c2b-80a4-fe7d1ea9b439520400005303986540570.005802BR5906SHOPEE6009SAO PAULO62070503***630475D8</textarea>
-                <button type="button" id="btn-copiar" class="btn-copiar" onclick="copiarPix()">Copiar Código PIX</button>
+                <button type="button" class="btn-copiar" onclick="copiarPix()">Copiar Código PIX</button>
             </div>
         </div>
     </div>
@@ -272,18 +133,18 @@
         resultContainer.style.display = 'block';
         if(score >= 7) {
             resultContainer.className = 'aprovado';
-            document.getElementById('result-text').innerText = 'APROVADO!';
+            document.getElementById('result-text').innerText = 'PARABÉNS! VOCÊ FOI APROVADO.';
             document.getElementById('certificado-section').style.display = 'block';
         } else {
             resultContainer.className = 'reprovado';
-            document.getElementById('result-text').innerText = 'REPROVADO.';
+            document.getElementById('result-text').innerText = 'INFELIZMENTE VOCÊ FOI REPROVADO.';
             document.getElementById('certificado-section').style.display = 'none';
         }
         resultContainer.scrollIntoView({ behavior: 'smooth' });
     });
 
     function gerarCertificado() {
-        if(!document.getElementById('aluno-nome').value || !document.getElementById('aluno-cpf').value) return alert("Preencha todos os campos!");
+        if(!document.getElementById('aluno-nome').value || !document.getElementById('aluno-cpf').value || !document.getElementById('aluno-nascimento').value) return alert("Preencha todos os campos!");
         document.getElementById('form-dados-certificado').style.display = 'none';
         document.getElementById('pix-section').style.display = 'block';
     }
@@ -292,8 +153,10 @@
         const code = document.getElementById('pix-code');
         code.select();
         document.execCommand('copy');
-        alert('Código copiado!');
+        alert('Código PIX copiado!');
     }
 </script>
 </body>
 </html>
+
+```
