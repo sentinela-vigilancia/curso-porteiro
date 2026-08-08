@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionário de Avaliação - Porteiro e Vigia</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; padding: 10px; margin: 0; }
@@ -26,7 +25,6 @@
         .aviso-taxa { color: #d9534f; font-weight: bold; background-color: #f2dede; padding: 15px; border-radius: 5px; border: 1px solid #ebccd1; margin-bottom: 15px; font-size: 1.1em; text-align: center; }
         .pix-code-box { width: 100%; height: 80px; padding: 10px; font-family: monospace; font-size: 0.9em; background: #fff; margin: 10px 0; border: 1px solid #ccc; box-sizing: border-box; }
         .btn-copiar { background-color: #17a2b8; width: 100%; color: white; border: none; padding: 15px; cursor: pointer; }
-        #pix-section { display: none; }
     </style>
 </head>
 <body>
@@ -110,7 +108,8 @@
                 <div class="input-group"><label>E-mail ou WhatsApp</label><input type="text" id="aluno-contato" required></div>
                 <button type="button" style="background:#28a745" onclick="gerarCertificado()">Emitir Certificado</button>
             </div>
-            <div id="pix-section">
+            <!-- Adicionado style="display: none;" diretamente na linha para forçar que fique oculto -->
+            <div id="pix-section" style="display: none;">
                 <div class="aviso-taxa">Para receber o certificado imediatamente, realize o pagamento da taxa de emissão via PIX. Após a confirmação, o certificado será enviado para o contato informado.</div>
                 <textarea id="pix-code" class="pix-code-box" readonly>00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/5ce61e50-0f30-4c2b-80a4-fe7d1ea9b439520400005303986540570.005802BR5906SHOPEE6009SAO PAULO62070503***630475D8</textarea>
                 <button type="button" class="btn-copiar" onclick="copiarPix()">Copiar Código PIX</button>
@@ -133,6 +132,8 @@
             res.className = 'aprovado';
             document.getElementById('result-text').innerHTML = `PARABÉNS! APROVADO.<br>Nota: ${pct}% (${score}/10 acertos)`;
             document.getElementById('certificado-section').style.display = 'block';
+            document.getElementById('form-dados-certificado').style.display = 'block'; // Garante que o formulário apareça
+            document.getElementById('pix-section').style.display = 'none'; // Garante que o pix continue oculto
         } else {
             res.className = 'reprovado';
             document.getElementById('result-text').innerHTML = `REPROVADO.<br>Nota: ${pct}% (${score}/10 acertos). Tente novamente.`;
