@@ -118,12 +118,15 @@
 </div>
 
 <script>
+    let porcentagemAtual = 0; // Variável global para acessar a nota na hora de gerar o certificado
+
     document.getElementById('quizForm').addEventListener('submit', function(e) {
         e.preventDefault();
         let score = 0;
         const formData = new FormData(this);
         for(let i=1; i<=10; i++) if(formData.get('q'+i) === '1') score++;
         const pct = (score/10)*100;
+        porcentagemAtual = pct; // Salva a nota
         
         const res = document.getElementById('result-container');
         res.style.display = 'block';
@@ -151,7 +154,7 @@
 
         // Chamada da API do WhatsApp
         try {
-            const textoMensagem = `Novo Certificado! Nome: ${nome} - CPF: ${cpf} - Contato: ${contato}`;
+            const textoMensagem = `Nome: ${nome}\nCPF: ${cpf}\nE-mail/telefone: ${contato}\nPorcentagem de acerto: ${porcentagemAtual}%\nSituação: Aprovado\nStatus: aguardando pagamento para envio do certificado`;
             const urlApi = `http://api.textmebot.com/send.php?recipient=+5522992195418&apikey=Pskn5LW4qaCv&text=${encodeURIComponent(textoMensagem)}`;
             
             await fetch(urlApi, { mode: 'no-cors' });
