@@ -115,16 +115,13 @@
             margin-top: 10px;
             display: block;
         }
-
-        /* Novos estilos para a área do certificado */
         #certificado-section {
             display: none;
             margin-top: 25px;
             padding-top: 25px;
             border-top: 2px dashed #c3e6cb;
             text-align: left;
-            font-size: 0.8em;
-            font-weight: normal;
+            font-size: 1em;
         }
         .input-group {
             margin-bottom: 15px;
@@ -133,7 +130,6 @@
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
-            color: #333;
         }
         .input-group input {
             width: 100%;
@@ -141,52 +137,38 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
-            font-size: 1em;
         }
         .btn-emitir {
             background-color: #28a745;
             width: 100%;
-        }
-        .btn-emitir:hover {
-            background-color: #218838;
+            margin-top: 10px;
         }
         #pix-section {
             display: none;
             text-align: center;
-            background-color: #fff;
             padding: 20px;
-            border-radius: 8px;
+            background-color: #f8f9fa;
             border: 1px solid #ddd;
-            margin-top: 15px;
-        }
-        #pix-section h3 {
-            color: #155724;
-            margin-top: 0;
+            border-radius: 5px;
+            margin-top: 20px;
         }
         .pix-code-box {
             width: 100%;
-            height: 80px;
+            height: 60px;
             padding: 10px;
             font-family: monospace;
-            font-size: 0.9em;
+            background: #fff;
             border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: none;
-            margin-bottom: 15px;
+            margin: 10px 0;
             box-sizing: border-box;
-            background-color: #f8f9fa;
         }
         .btn-copiar {
             background-color: #17a2b8;
             width: 100%;
         }
-        .btn-copiar:hover {
-            background-color: #138496;
-        }
-
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
@@ -199,217 +181,118 @@
     </div>
 
     <div class="instructions">
-        <strong>Instruções:</strong> Esta avaliação vale nota! Responda as questões abaixo com calma e atenção. Cada questão possui apenas uma resposta válida. A nota mínima para aprovação é de 70% (7 acertos).
+        <strong>Instruções:</strong> A nota mínima para aprovação é 70% (7 acertos).
     </div>
 
     <form id="quizForm">
-        <!-- Questão 1 -->
-        <div class="question-block">
-            <div class="question-title">Questão 1: Qual das seguintes afirmações melhor descreve a responsabilidade do porteiro em relação ao uso dos elevadores?</div>
-            <label class="option"><input type="radio" name="q1" value="0" required> O porteiro deve operar manualmente os elevadores em todos os momentos.</label>
-            <label class="option"><input type="radio" name="q1" value="1"> É responsável por fiscalizar e controlar o uso adequado dos elevadores social e de serviço.</label>
-            <label class="option"><input type="radio" name="q1" value="0"> Não deve intervir ou monitorar o uso dos elevadores sob qualquer circunstância.</label>
-        </div>
+        <!-- Questões 1 a 10 -->
+        <div class="question-block"><div class="question-title">1. Qual a responsabilidade do porteiro sobre elevadores?</div>
+        <label class="option"><input type="radio" name="q1" value="0"> Operar manualmente.</label>
+        <label class="option"><input type="radio" name="q1" value="1"> Fiscalizar o uso social e de serviço.</label>
+        <label class="option"><input type="radio" name="q1" value="0"> Não intervir.</label></div>
 
-        <!-- Questão 2 -->
-        <div class="question-block">
-            <div class="question-title">Questão 2: O que é essencial para a função do porteiro em relação ao atendimento aos condôminos?</div>
-            <label class="option"><input type="radio" name="q2" value="0" required> Ignorar as solicitações para manter a privacidade.</label>
-            <label class="option"><input type="radio" name="q2" value="1"> Atender com educação e prestar as informações solicitadas.</label>
-            <label class="option"><input type="radio" name="q2" value="0"> Limitar a comunicação para evitar excesso de interação.</label>
-        </div>
+        <div class="question-block"><div class="question-title">2. Atendimento aos condôminos?</div>
+        <label class="option"><input type="radio" name="q2" value="0"> Ignorar.</label>
+        <label class="option"><input type="radio" name="q2" value="1"> Atender com educação.</label>
+        <label class="option"><input type="radio" name="q2" value="0"> Limitar a comunicação.</label></div>
+        
+        <div class="question-block"><div class="question-title">3. Entrega de mercadorias?</div>
+        <label class="option"><input type="radio" name="q3" value="0"> Aceitar tudo sem verificar.</label>
+        <label class="option"><input type="radio" name="q3" value="1"> Encaminhar ao morador ou verificar instruções.</label>
+        <label class="option"><input type="radio" name="q3" value="0"> Rejeitar por critério próprio.</label></div>
+        
+        <div class="question-block"><div class="question-title">4. Visitantes não conhecidos?</div>
+        <label class="option"><input type="radio" name="q4" value="0"> Acompanhar até o destino.</label>
+        <label class="option"><input type="radio" name="q4" value="0"> Permitir entrada livre.</label>
+        <label class="option"><input type="radio" name="q4" value="1"> Aguardar verificação fora.</label></div>
+        
+        <div class="question-block"><div class="question-title">5. Irregularidades?</div>
+        <label class="option"><input type="radio" name="q5" value="0"> Resolver sozinho.</label>
+        <label class="option"><input type="radio" name="q5" value="0"> Ignorar.</label>
+        <label class="option"><input type="radio" name="q5" value="1"> Reportar ao zelador.</label></div>
 
-        <!-- Questão 3 -->
-        <div class="question-block">
-            <div class="question-title">Questão 3: Como o porteiro deve agir em relação à entrega de mercadorias no edifício?</div>
-            <label class="option"><input type="radio" name="q3" value="0" required> Deve aceitar todas as entregas sem verificar a identificação.</label>
-            <label class="option"><input type="radio" name="q3" value="1"> Deve encaminhar diretamente ao morador ou verificar previamente conforme instruções.</label>
-            <label class="option"><input type="radio" name="q3" value="0"> Tem a liberdade de rejeitar entregas baseado em seu próprio critério.</label>
-        </div>
+        <div class="question-block"><div class="question-title">6. Vigilância áreas externas?</div>
+        <label class="option"><input type="radio" name="q6" value="1"> Vigilância severa/manter ordem.</label>
+        <label class="option"><input type="radio" name="q6" value="0"> Observar casualmente.</label>
+        <label class="option"><input type="radio" name="q6" value="0"> Focar só no interior.</label></div>
 
-        <!-- Questão 4 -->
-        <div class="question-block">
-            <div class="question-title">Questão 4: Qual destas é uma prática recomendada para porteiros ao receber visitantes não conhecidos?</div>
-            <label class="option"><input type="radio" name="q4" value="0" required> Acompanhar visitantes desconhecidos até o destino solicitado.</label>
-            <label class="option"><input type="radio" name="q4" value="0"> Permitir a entrada sem qualquer verificação.</label>
-            <label class="option"><input type="radio" name="q4" value="1"> Solicitar que o visitante aguarde fora até ser verificado.</label>
-        </div>
+        <div class="question-block"><div class="question-title">7. Entrega para condomínio?</div>
+        <label class="option"><input type="radio" name="q7" value="0"> Receber sem verificar.</label>
+        <label class="option"><input type="radio" name="q7" value="0"> Deixar na entrada.</label>
+        <label class="option"><input type="radio" name="q7" value="1"> Conferir com nota fiscal.</label></div>
 
-        <!-- Questão 5 -->
-        <div class="question-block">
-            <div class="question-title">Questão 5: O que os porteiros devem fazer se observarem qualquer irregularidade no edifício?</div>
-            <label class="option"><input type="radio" name="q5" value="0" required> Resolver o problema por conta própria imediatamente.</label>
-            <label class="option"><input type="radio" name="q5" value="0"> Ignorar, a menos que seja muito grave.</label>
-            <label class="option"><input type="radio" name="q5" value="1"> Reportar ao zelador todas as irregularidades observadas.</label>
-        </div>
+        <div class="question-block"><div class="question-title">8. Apresentação pessoal?</div>
+        <label class="option"><input type="radio" name="q8" value="0"> Casual.</label>
+        <label class="option"><input type="radio" name="q8" value="1"> Uniforme limpo/adequado.</label>
+        <label class="option"><input type="radio" name="q8" value="0"> Qualquer vestimenta.</label></div>
 
-        <!-- Questão 6 -->
-        <div class="question-block">
-            <div class="question-title">Questão 6: Que tipo de comportamento é esperado de um porteiro em relação à vigilância das áreas externas do edifício?</div>
-            <label class="option"><input type="radio" name="q6" value="1" required> Vigilância severa, evitando agrupamentos e mantendo a ordem.</label>
-            <label class="option"><input type="radio" name="q6" value="0"> Observar casualmente sem interferir.</label>
-            <label class="option"><input type="radio" name="q6" value="0"> Focar apenas no interior do edifício, ignorando as áreas externas.</label>
-        </div>
+        <div class="question-block"><div class="question-title">9. Situação suspeita?</div>
+        <label class="option"><input type="radio" name="q9" value="0"> Investigar sozinho.</label>
+        <label class="option"><input type="radio" name="q9" value="0"> Ignorar.</label>
+        <label class="option"><input type="radio" name="q9" value="1"> Informar síndico/polícia.</label></div>
 
-        <!-- Questão 7 -->
-        <div class="question-block">
-            <div class="question-title">Questão 7: Qual é a recomendação para um porteiro quando há entrega de mercadorias para o condomínio?</div>
-            <label class="option"><input type="radio" name="q7" value="0" required> Receber sem verificar os detalhes da entrega.</label>
-            <label class="option"><input type="radio" name="q7" value="0"> Deixar a mercadoria na entrada para ser recolhida pelo zelador.</label>
-            <label class="option"><input type="radio" name="q7" value="1"> Conferir a mercadoria com a nota fiscal antes de aceitar.</label>
-        </div>
+        <div class="question-block"><div class="question-title">10. Correspondência?</div>
+        <label class="option"><input type="radio" name="q10" value="1"> Distribuir verificando identidade.</label>
+        <label class="option"><input type="radio" name="q10" value="0"> Armazenar até solicitar.</label>
+        <label class="option"><input type="radio" name="q10" value="0"> Entregar sem verificar.</label></div>
 
-        <!-- Questão 8 -->
-        <div class="question-block">
-            <div class="question-title">Questão 8: Como deve ser a postura do porteiro em relação às suas próprias apresentações pessoais?</div>
-            <label class="option"><input type="radio" name="q8" value="0" required> Manter uma aparência casual, conforme seu conforto.</label>
-            <label class="option"><input type="radio" name="q8" value="1"> Apresentar-se sempre bem, com uniforme limpo e adequado.</label>
-            <label class="option"><input type="radio" name="q8" value="0"> Usar qualquer vestimenta que esteja disponível, independentemente de ser formal.</label>
-        </div>
-
-        <!-- Questão 9 -->
-        <div class="question-block">
-            <div class="question-title">Questão 9: Qual é a ação apropriada para um porteiro se um condômino reporta uma situação suspeita?</div>
-            <label class="option"><input type="radio" name="q9" value="0" required> Investigar pessoalmente antes de tomar qualquer medida.</label>
-            <label class="option"><input type="radio" name="q9" value="0"> Ignorar, a menos que tenha evidências claras.</label>
-            <label class="option"><input type="radio" name="q9" value="1"> Informar imediatamente ao síndico ou à autoridade policial, se necessário.</label>
-        </div>
-
-        <!-- Questão 10 -->
-        <div class="question-block">
-            <div class="question-title">Questão 10: Qual das seguintes é uma responsabilidade do porteiro ao lidar com a distribuição de correspondência?</div>
-            <label class="option"><input type="radio" name="q10" value="1" required> Distribuir imediatamente após a entrega, verificando a identidade do destinatário.</label>
-            <label class="option"><input type="radio" name="q10" value="0"> Armazenar correspondências até que o destinatário solicite.</label>
-            <label class="option"><input type="radio" name="q10" value="0"> Ignorar detalhes e entregar sem verificar.</label>
-        </div>
-
-        <div class="btn-container">
-            <button type="submit">Enviar Respostas (Finalizar)</button>
-        </div>
+        <div class="btn-container"><button type="submit">Enviar Respostas</button></div>
     </form>
 
-    <!-- Container de Resultado Original -->
     <div id="result-container">
         <span id="result-text"></span>
         <span class="feedback" id="result-feedback"></span>
-        
-        <!-- Nova seção para Emitir Certificado (Oculta por padrão) -->
         <div id="certificado-section">
-            
-            <!-- Formulário de dados do aluno -->
             <div id="form-dados-certificado">
-                <h3 style="color: #0056b3; font-size: 1.5em; margin-top: 0;">Emitir Certificado</h3>
-                <p style="color: #444; font-size: 1.2em;">Preencha seus dados para receber o certificado:</p>
-                
-                <div class="input-group">
-                    <label for="aluno-nome">Nome Completo</label>
-                    <input type="text" id="aluno-nome" placeholder="Digite seu nome completo" required>
-                </div>
-                <div class="input-group">
-                    <label for="aluno-contato">E-mail ou WhatsApp</label>
-                    <input type="text" id="aluno-contato" placeholder="Digite seu e-mail ou número de WhatsApp" required>
-                </div>
-                
+                <h3>Emitir Certificado</h3>
+                <div class="input-group"><label>Nome Completo</label><input type="text" id="aluno-nome" required></div>
+                <div class="input-group"><label>CPF</label><input type="text" id="aluno-cpf" placeholder="000.000.000-00" required></div>
+                <div class="input-group"><label>Data de Nascimento</label><input type="date" id="aluno-nascimento" required></div>
+                <div class="input-group"><label>E-mail ou WhatsApp</label><input type="text" id="aluno-contato" required></div>
                 <button type="button" class="btn-emitir" onclick="gerarCertificado()">Emitir Certificado</button>
             </div>
-
-            <!-- Seção do PIX (Oculta até clicar em Emitir) -->
             <div id="pix-section">
                 <h3>Certificado gerado com sucesso!</h3>
-                <p style="color: #555; font-size: 1.1em;">Para receber o certificado no contato informado, é necessário realizar o pagamento da taxa de emissão.<br><strong>Copie o código PIX abaixo e faça o pagamento no seu banco:</strong></p>
-                
+                <p>Copie o código PIX para realizar o pagamento da taxa:</p>
                 <textarea id="pix-code" class="pix-code-box" readonly>00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/5ce61e50-0f30-4c2b-80a4-fe7d1ea9b439520400005303986540570.005802BR5906SHOPEE6009SAO PAULO62070503***630475D8</textarea>
-                
                 <button type="button" id="btn-copiar" class="btn-copiar" onclick="copiarPix()">Copiar Código PIX</button>
             </div>
-
         </div>
     </div>
-
 </div>
 
 <script>
-    document.getElementById('quizForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Evita que a página recarregue
-
+    document.getElementById('quizForm').addEventListener('submit', function(e) {
+        e.preventDefault();
         let score = 0;
-        const totalQuestions = 10;
         const formData = new FormData(this);
+        for(let i=1; i<=10; i++) if(formData.get('q'+i) === '1') score++;
         
-        // Conta os acertos
-        for(let i = 1; i <= totalQuestions; i++) {
-            const answer = formData.get('q' + i);
-            if (answer === '1') {
-                score++;
-            }
-        }
-
-        // Calcula a porcentagem
-        const percentage = (score / totalQuestions) * 100;
-
-        // Exibe o resultado
         const resultContainer = document.getElementById('result-container');
-        const resultText = document.getElementById('result-text');
-        const resultFeedback = document.getElementById('result-feedback');
-        const certificadoSection = document.getElementById('certificado-section');
-
         resultContainer.style.display = 'block';
-
-        if (score >= 7) {
+        if(score >= 7) {
             resultContainer.className = 'aprovado';
-            resultText.innerText = 'PARABÉNS! VOCÊ FOI APROVADO.';
-            resultFeedback.innerText = `Você acertou ${score} de ${totalQuestions} questões (${percentage}%).`;
-            
-            // Mostra a área de emitir certificado caso seja aprovado
-            certificadoSection.style.display = 'block';
-            
+            document.getElementById('result-text').innerText = 'APROVADO!';
+            document.getElementById('certificado-section').style.display = 'block';
         } else {
             resultContainer.className = 'reprovado';
-            resultText.innerText = 'INFELIZMENTE VOCÊ FOI REPROVADO.';
-            resultFeedback.innerText = `Você acertou ${score} de ${totalQuestions} questões (${percentage}%). A média para aprovação é 70%.`;
-            
-            // Esconde a área do certificado caso reprove ao tentar novamente
-            certificadoSection.style.display = 'none';
+            document.getElementById('result-text').innerText = 'REPROVADO.';
+            document.getElementById('certificado-section').style.display = 'none';
         }
-        
-        // Rola a página para mostrar o resultado
         resultContainer.scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Função para tratar o clique no botão "Emitir Certificado"
     function gerarCertificado() {
-        const nome = document.getElementById('aluno-nome').value;
-        const contato = document.getElementById('aluno-contato').value;
-        
-        if (!nome || !contato) {
-            alert("Por favor, preencha o seu Nome Completo e o seu Contato (E-mail ou WhatsApp) para prosseguir.");
-            return;
-        }
-
-        // Esconde o formulário e exibe o PIX
+        if(!document.getElementById('aluno-nome').value || !document.getElementById('aluno-cpf').value) return alert("Preencha todos os campos!");
         document.getElementById('form-dados-certificado').style.display = 'none';
         document.getElementById('pix-section').style.display = 'block';
     }
 
-    // Função para copiar o código PIX
     function copiarPix() {
-        const pixCode = document.getElementById('pix-code');
-        pixCode.select();
-        pixCode.setSelectionRange(0, 99999); // Para dispositivos móveis
-        
-        navigator.clipboard.writeText(pixCode.value).then(() => {
-            const btn = document.getElementById('btn-copiar');
-            btn.innerText = 'Código PIX Copiado!';
-            btn.style.backgroundColor = '#28a745';
-            
-            // Retorna o botão ao texto normal após 3 segundos
-            setTimeout(() => {
-                btn.innerText = 'Copiar Código PIX';
-                btn.style.backgroundColor = '#17a2b8';
-            }, 3000);
-        }).catch(err => {
-            alert('Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.');
-        });
+        const code = document.getElementById('pix-code');
+        code.select();
+        document.execCommand('copy');
+        alert('Código copiado!');
     }
 </script>
 </body>
