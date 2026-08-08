@@ -115,6 +115,75 @@
             margin-top: 10px;
             display: block;
         }
+
+        /* Novos estilos para a área do certificado */
+        #certificado-section {
+            display: none;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 2px dashed #c3e6cb;
+            text-align: left;
+            font-size: 0.8em;
+            font-weight: normal;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .btn-emitir {
+            background-color: #28a745;
+            width: 100%;
+        }
+        .btn-emitir:hover {
+            background-color: #218838;
+        }
+        #pix-section {
+            display: none;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 15px;
+        }
+        #pix-section h3 {
+            color: #155724;
+            margin-top: 0;
+        }
+        .pix-code-box {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 0.9em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            background-color: #f8f9fa;
+        }
+        .btn-copiar {
+            background-color: #17a2b8;
+            width: 100%;
+        }
+        .btn-copiar:hover {
+            background-color: #138496;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -219,9 +288,42 @@
         </div>
     </form>
 
+    <!-- Container de Resultado Original -->
     <div id="result-container">
         <span id="result-text"></span>
         <span class="feedback" id="result-feedback"></span>
+        
+        <!-- Nova seção para Emitir Certificado (Oculta por padrão) -->
+        <div id="certificado-section">
+            
+            <!-- Formulário de dados do aluno -->
+            <div id="form-dados-certificado">
+                <h3 style="color: #0056b3; font-size: 1.5em; margin-top: 0;">Emitir Certificado</h3>
+                <p style="color: #444; font-size: 1.2em;">Preencha seus dados para receber o certificado:</p>
+                
+                <div class="input-group">
+                    <label for="aluno-nome">Nome Completo</label>
+                    <input type="text" id="aluno-nome" placeholder="Digite seu nome completo" required>
+                </div>
+                <div class="input-group">
+                    <label for="aluno-contato">E-mail ou WhatsApp</label>
+                    <input type="text" id="aluno-contato" placeholder="Digite seu e-mail ou número de WhatsApp" required>
+                </div>
+                
+                <button type="button" class="btn-emitir" onclick="gerarCertificado()">Emitir Certificado</button>
+            </div>
+
+            <!-- Seção do PIX (Oculta até clicar em Emitir) -->
+            <div id="pix-section">
+                <h3>Certificado gerado com sucesso!</h3>
+                <p style="color: #555; font-size: 1.1em;">Para receber o certificado no contato informado, é necessário realizar o pagamento da taxa de emissão.<br><strong>Copie o código PIX abaixo e faça o pagamento no seu banco:</strong></p>
+                
+                <textarea id="pix-code" class="pix-code-box" readonly>00020101021226850014br.gov.bcb.pix2563pix.santander.com.br/qr/v2/5ce61e50-0f30-4c2b-80a4-fe7d1ea9b439520400005303986540570.005802BR5906SHOPEE6009SAO PAULO62070503***630475D8</textarea>
+                
+                <button type="button" id="btn-copiar" class="btn-copiar" onclick="copiarPix()">Copiar Código PIX</button>
+            </div>
+
+        </div>
     </div>
 
 </div>
@@ -249,6 +351,7 @@
         const resultContainer = document.getElementById('result-container');
         const resultText = document.getElementById('result-text');
         const resultFeedback = document.getElementById('result-feedback');
+        const certificadoSection = document.getElementById('certificado-section');
 
         resultContainer.style.display = 'block';
 
@@ -256,15 +359,58 @@
             resultContainer.className = 'aprovado';
             resultText.innerText = 'PARABÉNS! VOCÊ FOI APROVADO.';
             resultFeedback.innerText = `Você acertou ${score} de ${totalQuestions} questões (${percentage}%).`;
+            
+            // Mostra a área de emitir certificado caso seja aprovado
+            certificadoSection.style.display = 'block';
+            
         } else {
             resultContainer.className = 'reprovado';
             resultText.innerText = 'INFELIZMENTE VOCÊ FOI REPROVADO.';
             resultFeedback.innerText = `Você acertou ${score} de ${totalQuestions} questões (${percentage}%). A média para aprovação é 70%.`;
+            
+            // Esconde a área do certificado caso reprove ao tentar novamente
+            certificadoSection.style.display = 'none';
         }
         
         // Rola a página para mostrar o resultado
         resultContainer.scrollIntoView({ behavior: 'smooth' });
     });
+
+    // Função para tratar o clique no botão "Emitir Certificado"
+    function gerarCertificado() {
+        const nome = document.getElementById('aluno-nome').value;
+        const contato = document.getElementById('aluno-contato').value;
+        
+        if (!nome || !contato) {
+            alert("Por favor, preencha o seu Nome Completo e o seu Contato (E-mail ou WhatsApp) para prosseguir.");
+            return;
+        }
+
+        // Esconde o formulário e exibe o PIX
+        document.getElementById('form-dados-certificado').style.display = 'none';
+        document.getElementById('pix-section').style.display = 'block';
+    }
+
+    // Função para copiar o código PIX
+    function copiarPix() {
+        const pixCode = document.getElementById('pix-code');
+        pixCode.select();
+        pixCode.setSelectionRange(0, 99999); // Para dispositivos móveis
+        
+        navigator.clipboard.writeText(pixCode.value).then(() => {
+            const btn = document.getElementById('btn-copiar');
+            btn.innerText = 'Código PIX Copiado!';
+            btn.style.backgroundColor = '#28a745';
+            
+            // Retorna o botão ao texto normal após 3 segundos
+            setTimeout(() => {
+                btn.innerText = 'Copiar Código PIX';
+                btn.style.backgroundColor = '#17a2b8';
+            }, 3000);
+        }).catch(err => {
+            alert('Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.');
+        });
+    }
 </script>
 </body>
 </html>
