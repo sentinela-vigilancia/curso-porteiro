@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário de Avaliação - Porteiro e Vigia</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #0056b3;
+            margin: 0 0 10px 0;
+        }
+        .header p {
+            color: #666;
+            margin: 0;
+        }
+        .instructions {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #ffeeba;
+            margin-bottom: 30px;
+        }
+        .question-block {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .question-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        .option {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        button:active {
+            transform: scale(0.98);
+        }
+        #result-container {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 8px;
+            font-size: 1.3em;
+            font-weight: bold;
+            animation: fadeIn 0.5s;
+        }
+        .aprovado {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .reprovado {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .feedback {
+            font-size: 0.8em;
+            font-weight: normal;
+            margin-top: 10px;
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Avaliação: Porteiro e Vigia</h1>
+        <p>Área do Aluno - Prime Cursos</p>
+    </div>
+
+    <div class="instructions">
+        <strong>Instruções:</strong> Esta avaliação vale nota! Responda as questões abaixo com calma e atenção. Cada questão possui apenas uma resposta válida. A nota mínima para aprovação é de 70% (7 acertos).
+    </div>
+
+    <form id="quizForm">
+        <!-- Questão 1 -->
+        <div class="question-block">
+            <div class="question-title">Questão 1: Qual das seguintes afirmações melhor descreve a responsabilidade do porteiro em relação ao uso dos elevadores?</div>
+            <label class="option"><input type="radio" name="q1" value="0" required> O porteiro deve operar manualmente os elevadores em todos os momentos.</label>
+            <label class="option"><input type="radio" name="q1" value="1"> É responsável por fiscalizar e controlar o uso adequado dos elevadores social e de serviço.</label>
+            <label class="option"><input type="radio" name="q1" value="0"> Não deve intervir ou monitorar o uso dos elevadores sob qualquer circunstância.</label>
+        </div>
+
+        <!-- Questão 2 -->
+        <div class="question-block">
+            <div class="question-title">Questão 2: O que é essencial para a função do porteiro em relação ao atendimento aos condôminos?</div>
+            <label class="option"><input type="radio" name="q2" value="0" required> Ignorar as solicitações para manter a privacidade.</label>
+            <label class="option"><input type="radio" name="q2" value="1"> Atender com educação e prestar as informações solicitadas.</label>
+            <label class="option"><input type="radio" name="q2" value="0"> Limitar a comunicação para evitar excesso de interação.</label>
+        </div>
+
+        <!-- Questão 3 -->
+        <div class="question-block">
+            <div class="question-title">Questão 3: Como o porteiro deve agir em relação à entrega de mercadorias no edifício?</div>
+            <label class="option"><input type="radio" name="q3" value="0" required> Deve aceitar todas as entregas sem verificar a identificação.</label>
+            <label class="option"><input type="radio" name="q3" value="1"> Deve encaminhar diretamente ao morador ou verificar previamente conforme instruções.</label>
+            <label class="option"><input type="radio" name="q3" value="0"> Tem a liberdade de rejeitar entregas baseado em seu próprio critério.</label>
+        </div>
+
+        <!-- Questão 4 -->
+        <div class="question-block">
+            <div class="question-title">Questão 4: Qual destas é uma prática recomendada para porteiros ao receber visitantes não conhecidos?</div>
+            <label class="option"><input type="radio" name="q4" value="0" required> Acompanhar visitantes desconhecidos até o destino solicitado.</label>
+            <label class="option"><input type="radio" name="q4" value="0"> Permitir a entrada sem qualquer verificação.</label>
+            <label class="option"><input type="radio" name="q4" value="1"> Solicitar que o visitante aguarde fora até ser verificado.</label>
+        </div>
+
+        <!-- Questão 5 -->
+        <div class="question-block">
+            <div class="question-title">Questão 5: O que os porteiros devem fazer se observarem qualquer irregularidade no edifício?</div>
+            <label class="option"><input type="radio" name="q5" value="0" required> Resolver o problema por conta própria imediatamente.</label>
+            <label class="option"><input type="radio" name="q5" value="0"> Ignorar, a menos que seja muito grave.</label>
+            <label class="option"><input type="radio" name="q5" value="1"> Reportar ao zelador todas as irregularidades observadas.</label>
+        </div>
+
+        <!-- Questão 6 -->
+        <div class="question-block">
+            <div class="question-title">Questão 6: Que tipo de comportamento é esperado de um porteiro em relação à vigilância das áreas externas do edifício?</div>
+            <label class="option"><input type="radio" name="q6" value="1" required> Vigilância severa, evitando agrupamentos e mantendo a ordem.</label>
+            <label class="option"><input type="radio" name="q6" value="0"> Observar casualmente sem interferir.</label>
+            <label class="option"><input type="radio" name="q6" value="0"> Focar apenas no interior do edifício, ignorando as áreas externas.</label>
+        </div>
+
+        <!-- Questão 7 -->
+        <div class="question-block">
+            <div class="question-title">Questão 7: Qual é a recomendação para um porteiro quando há entrega de mercadorias para o condomínio?</div>
+            <label class="option"><input type="radio" name="q7" value="0" required> Receber sem verificar os detalhes da entrega.</label>
+            <label class="option"><input type="radio" name="q7" value="0"> Deixar a mercadoria na entrada para ser recolhida pelo zelador.</label>
+            <label class="option"><input type="radio" name="q7" value="1"> Conferir a mercadoria com a nota fiscal antes de aceitar.</label>
+        </div>
+
+        <!-- Questão 8 -->
+        <div class="question-block">
+            <div class="question-title">Questão 8: Como deve ser a postura do porteiro em relação às suas próprias apresentações pessoais?</div>
+            <label class="option"><input type="radio" name="q8" value="0" required> Manter uma aparência casual, conforme seu conforto.</label>
+            <label class="option"><input type="radio" name="q8" value="1"> Apresentar-se sempre bem, com uniforme limpo e adequado.</label>
+            <label class="option"><input type="radio" name="q8" value="0"> Usar qualquer vestimenta que esteja disponível, independentemente de ser formal.</label>
+        </div>
+
+        <!-- Questão 9 -->
+        <div class="question-block">
+            <div class="question-title">Questão 9: Qual é a ação apropriada para um porteiro se um condômino reporta uma situação suspeita?</div>
+            <label class="option"><input type="radio" name="q9" value="0" required> Investigar pessoalmente antes de tomar qualquer medida.</label>
+            <label class="option"><input type="radio" name="q9" value="0"> Ignorar, a menos que tenha evidências claras.</label>
+            <label class="option"><input type="radio" name="q9" value="1"> Informar imediatamente ao síndico ou à autoridade policial, se necessário.</label>
+        </div>
+
+        <!-- Questão 10 -->
+        <div class="question-block">
+            <div class="question-title">Questão 10: Qual das seguintes é uma responsabilidade do porteiro ao lidar com a distribuição de correspondência?</div>
+            <label class="option"><input type="radio" name="q10" value="1" required> Distribuir imediatamente após a entrega, verificando a identidade do destinatário.</label>
+            <label class="option"><input type="radio" name="q10" value="0"> Armazenar correspondências até que o destinatário solicite.</label>
+            <label class="option"><input type="radio" name="q10" value="0"> Ignorar detalhes e entregar sem verificar.</label>
+        </div>
+
+        <div class="btn-container">
+            <button type="submit">Enviar Respostas (Finalizar)</button>
+        </div>
+    </form>
+
+    <div id="result-container">
+        <span id="result-text"></span>
+        <span class="feedback" id="result-feedback"></span>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que a página recarregue
+
+        let score = 0;
+        const totalQuestions = 10;
+        const formData = new FormData(this);
+        
+        // Conta os acertos
+        for(let i = 1; i <= totalQuestions; i++) {
+            const answer = formData.get('q' + i);
+            if (answer === '1') {
+                score++;
+            }
+        }
+
+        // Calcula a porcentagem
+        const percentage = (score / totalQuestions) * 100;
+
+        // Exibe o resultado
+        const resultContainer = document.getElementById('result-container');
+        const resultText = document.getElementById('result-text');
+        const resultFeedback = document.getElementById('result-feedback');
+
+        resultContainer.style.display = 'block';
+
+        if (score >= 7) {
+            resultContainer.className = 'aprovado';
+            resultText.innerText = 'PARABÉNS! VOCÊ FOI APROVADO.';
+            resultFeedback.innerText = `Você acertou ${score} de ${totalQuestions} questões (${percentage}%).`;
+        } else {
+            resultContainer.className = 'reprovado';
+            resultText.innerText = 'INFELIZMENTE VOCÊ FOI REPROVADO.';
+            resultFeedback.innerText = `Você acertou ${score} de ${totalQuestions} questões (${percentage}%). A média para aprovação é 70%.`;
+        }
+        
+        // Rola a página para mostrar o resultado
+        resultContainer.scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+</body>
+</html>
